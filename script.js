@@ -7,17 +7,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const header = document.querySelector('.header .container');
     const nav = document.querySelector('.main-nav');
+    const reserveButton = document.querySelector('.header .btn-primary');
     
     // Only add mobile menu button if screen width is less than 768px
     function checkScreenSize() {
         if (window.innerWidth < 768 && !document.querySelector('.mobile-menu-button')) {
             header.insertBefore(mobileMenuButton, nav);
             nav.style.display = 'none';
+            if (reserveButton) {
+                reserveButton.style.display = 'none';
+            }
         } else if (window.innerWidth >= 768) {
             if (document.querySelector('.mobile-menu-button')) {
                 document.querySelector('.mobile-menu-button').remove();
             }
             nav.style.display = 'block';
+            if (reserveButton) {
+                reserveButton.style.display = 'inline-block';
+            }
         }
     }
     
@@ -30,7 +37,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toggle menu when button is clicked
     document.addEventListener('click', function(e) {
         if (e.target.closest('.mobile-menu-button')) {
-            nav.style.display = nav.style.display === 'none' ? 'block' : 'none';
+            const isOpen = nav.style.display === 'block';
+            nav.style.display = isOpen ? 'none' : 'block';
+            // Cambiar el ícono del botón
+            const icon = mobileMenuButton.querySelector('i');
+            if (icon) {
+                icon.className = isOpen ? 'fas fa-bars' : 'fas fa-times';
+            }
+        } else if (window.innerWidth < 768 && nav.style.display === 'block') {
+            // Si el clic fue fuera del menú y del botón, y el menú está abierto
+            nav.style.display = 'none';
+            // Restaurar el ícono del botón
+            const icon = mobileMenuButton.querySelector('i');
+            if (icon) {
+                icon.className = 'fas fa-bars';
+            }
         }
     });
     
