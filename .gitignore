@@ -104,3 +104,5 @@ venv/
 .env.development
 .env.production
 .env.test
+
+assets/
