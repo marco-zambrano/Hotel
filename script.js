@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Only add mobile menu button if screen width is less than 768px
     function checkScreenSize() {
-        if (window.innerWidth < 768 && !document.querySelector('.mobile-menu-button')) {
+        if (window.innerWidth < 1024 && !document.querySelector('.mobile-menu-button')) {
             header.insertBefore(mobileMenuButton, nav);
             nav.style.display = 'none';
             if (reserveButton) {
                 reserveButton.style.display = 'none';
             }
-        } else if (window.innerWidth >= 768) {
+        } else if (window.innerWidth >= 1024) {
             if (document.querySelector('.mobile-menu-button')) {
                 document.querySelector('.mobile-menu-button').remove();
             }
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (icon) {
                 icon.className = isOpen ? 'fas fa-bars' : 'fas fa-times';
             }
-        } else if (window.innerWidth < 768 && nav.style.display === 'block') {
+        } else if (window.innerWidth < 1024 && nav.style.display === 'block') {
             // Si el clic fue fuera del menú y del botón, y el menú está abierto
             nav.style.display = 'none';
             // Restaurar el ícono del botón
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // Close mobile menu if open
-                if (window.innerWidth < 768) {
+                if (window.innerWidth < 1024) {
                     nav.style.display = 'none';
                 }
             }
