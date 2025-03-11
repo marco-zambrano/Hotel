@@ -49,23 +49,44 @@
             <div class="container">
                 <div class="booking-form">
                     <div class="booking-item">
-                        <label>Fecha de llegada</label>
+                        <label for="check-in">Fecha de llegada</label>
                         <div class="input-with-icon">
                             <i class="fas fa-calendar"></i>
-                            <span>12 Mar, 2025</span>
+                            <input type="date" id="check-in" name="check-in">
                         </div>
                     </div>
                     <div class="booking-item">
-                        <label>Fecha de salida</label>
+                        <label for="check-out">Fecha de salida</label>
                         <div class="input-with-icon">
                             <i class="fas fa-calendar"></i>
-                            <span>15 Mar, 2025</span>
+                            <input type="date" id="check-out" name="check-out">
                         </div>
                     </div>
                     <div class="booking-item">
                         <label>Huéspedes</label>
-                        <div class="input-with-icon">
-                            <span>2 Adultos, 1 Niño</span>
+                        <div class="guests-selector">
+                            <div class="input-with-icon" id="guests-display">
+                                <i class="fas fa-user"></i>
+                                <span>0 Adultos, 0 Niños</span>
+                            </div>
+                            <div class="guests-dropdown">
+                                <div class="guest-type">
+                                    <span>Adultos</span>
+                                    <div class="guest-counter">
+                                        <button type="button" class="counter-btn" data-action="decrease" data-type="adults">-</button>
+                                        <span class="count" id="adults-count">0</span>
+                                        <button type="button" class="counter-btn" data-action="increase" data-type="adults">+</button>
+                                    </div>
+                                </div>
+                                <div class="guest-type">
+                                    <span>Niños</span>
+                                    <div class="guest-counter">
+                                        <button type="button" class="counter-btn" data-action="decrease" data-type="children">-</button>
+                                        <span class="count" id="children-count">0</span>
+                                        <button type="button" class="counter-btn" data-action="increase" data-type="children">+</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="booking-item">

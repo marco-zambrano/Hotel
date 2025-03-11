@@ -298,8 +298,10 @@ p {
     align-items: center;
     gap: 0.5rem;
     background-color: white;
-    padding: 0.75rem;
+    padding: 0 0.75rem;
     border-radius: 0.25rem;
+    height: 43.5px;
+    cursor: pointer;
 }
 
 .input-with-icon i {
@@ -312,7 +314,9 @@ p {
     font-family: inherit;
     color: #333;
     width: 100%;
+    height: 100%;
     cursor: pointer;
+    background: transparent;
 }
 
 /* Ocultar el ícono por defecto del input date */
@@ -327,20 +331,20 @@ p {
 /* Estilos para el selector de huéspedes */
 .guests-selector {
     position: relative;
+    width: 100%;
 }
 
 .guests-dropdown {
     display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 0.5rem);
     left: 0;
     right: 0;
     background-color: white;
     border-radius: 0.25rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    margin-top: 0.5rem;
-    z-index: 10;
+    z-index: 1000;
 }
 
 .guests-selector:focus-within .guests-dropdown,
@@ -357,6 +361,7 @@ p {
 
 .guest-type:not(:last-child) {
     border-bottom: 1px solid #eee;
+    margin-bottom: 0.5rem;
 }
 
 .guest-counter {
@@ -380,7 +385,7 @@ p {
     transition: all 0.3s ease;
 }
 
-.counter-btn:hover {
+.counter-btn:hover:not(:disabled) {
     background-color: #355F2E;
     color: white;
 }

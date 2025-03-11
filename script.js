@@ -78,16 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Date picker functionality (simplified version)
-    const dateInputs = document.querySelectorAll('.input-with-icon');
-    dateInputs.forEach(input => {
-        if (input.querySelector('i.fa-calendar')) {
-            input.addEventListener('click', function() {
-                alert('En una implementación real, aquí se abriría un selector de fechas.');
-            });
-        }
-    });
-    
     // Form submission
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
@@ -167,4 +157,88 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('En una implementación real, aquí se abriría una galería lightbox con la imagen ampliada.');
         });
     });
+
+    // Fecha mínima para check-in (hoy)
+    const today = new Date().toISOString().split('T')[0];
+    const checkIn = document.getElementById('check-in');
+    const checkOut = document.getElementById('check-out');
+
+    // Configurar fechas mínimas
+    checkIn.min = today;
+    checkIn.value = today;
+    
+    // Actualizar fecha mínima de check-out cuando cambie check-in
+    checkIn.addEventListener('change', function() {
+        const nextDay = new Date(this.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        checkOut.min = nextDay.toISOString().split('T')[0];
+        
+        // Si la fecha de salida es menor que la nueva fecha mínima, actualizarla
+        if (checkOut.value < checkOut.min) {
+            checkOut.value = checkOut.min;
+        }
+    });
+
+    // Establecer fecha inicial de check-out (mañana)
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    checkOut.min = tomorrow.toISOString().split('T')[0];
+    checkOut.value = checkOut.min;
+
+    // Selector de huéspedes
+    const guestsSelector = document.querySelector('.guests-selector');
+    const guestsDisplay = document.getElementById('guests-display');
+    const guestsDropdown = document.querySelector('.guests-dropdown');
+    let adultsCount = 0;
+    let childrenCount = 0;
+
+    // Mostrar/ocultar dropdown al hacer clic en el selector
+    guestsDisplay.addEventListener('click', function(e) {
+        e.stopPropagation();
+        guestsDropdown.style.display = guestsDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Cerrar dropdown al hacer clic fuera
+    document.addEventListener('click', function(e) {
+        if (!guestsSelector.contains(e.target)) {
+            guestsDropdown.style.display = 'none';
+        }
+    });
+
+    // Manejar los contadores de huéspedes
+    document.querySelectorAll('.counter-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const action = this.dataset.action;
+            const type = this.dataset.type;
+            const countElement = this.parentElement.querySelector('.count');
+            let count = parseInt(countElement.textContent);
+
+            if (action === 'increase') {
+                if ((type === 'adults' && count < 4) || (type === 'children' && count < 4)) {
+                    count++;
+                }
+            } else if (action === 'decrease' && count > 0) {
+                count--;
+            }
+
+            // Actualizar el contador
+            countElement.textContent = count;
+
+            // Actualizar las variables globales
+            if (type === 'adults') {
+                adultsCount = count;
+            } else {
+                childrenCount = count;
+            }
+
+            // Actualizar el texto del display
+            updateGuestsDisplay();
+        });
+    });
+
+    function updateGuestsDisplay() {
+        const displayText = `${adultsCount} Adulto${adultsCount !== 1 ? 's' : ''}, ${childrenCount} Niño${childrenCount !== 1 ? 's' : ''}`;
+        guestsDisplay.querySelector('span').textContent = displayText;
+    }
 });
