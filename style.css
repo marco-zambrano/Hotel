@@ -927,6 +927,44 @@ p {
     .booking-form {
         grid-template-columns: repeat(4, 1fr);
     }
+    .booking-item .btn-secondary {
+        margin-top: auto;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 250px);
+        gap: 15px;
+    }
+
+    .gallery-item {
+        height: 100%;
+        grid-column: auto;
+    }
+
+    .gallery-item.large {
+        height: 100%;
+    }
+
+    /* Primera imagen grande */
+    .gallery-item:nth-child(1) {
+        grid-column: 1 / span 2;
+        grid-row: 1;
+    }
+    /* Dos imágenes pequeñas a la izquierda */
+    .gallery-item:nth-child(4) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .gallery-item:nth-child(5) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    /* Segunda imagen grande */
+    .gallery-item:nth-child(6) {
+        grid-column: span 2;
+    }
     
     .about-grid {
         grid-template-columns: 1fr 1fr;
@@ -964,41 +1002,6 @@ p {
     
     .rooms-grid {
         grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, 300px);
-        gap: 15px;
-    }
-
-    .gallery-item {
-        height: 100%;
-        grid-column: auto;
-    }
-
-    .gallery-item.large {
-        height: 100%;
-    }
-
-    /* Primera imagen grande */
-    .gallery-item:nth-child(1) {
-        grid-column: 1 / span 2;
-        grid-row: 1;
-    }
-    /* Dos imágenes pequeñas a la izquierda */
-    .gallery-item:nth-child(4) {
-        grid-column: 1;
-        grid-row: 2;
-    }
-    .gallery-item:nth-child(5) {
-        grid-column: 2;
-        grid-row: 2;
-    }
-    /* Segunda imagen grande */
-    .gallery-item:nth-child(6) {
-        grid-column: span 2;
     }
     
     .services-grid {
