@@ -5,6 +5,12 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -27,8 +33,12 @@ ul {
 
 .container {
     width: 100%;
-    padding: 0 1rem;
-    margin: 0 auto;
+    max-width: 1200px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
 }
 
 /* Typography - Mobile First */
@@ -221,11 +231,14 @@ p {
 .hero {
     position: relative;
     height: 80vh;
+    width: 100%;
+    overflow: hidden;
 }
 
 .hero-image {
     position: relative;
     height: 100%;
+    width: 100%;
     background-image: url('assets/hotel-exterior.jpg');
     background-size: cover;
     background-position: center;
@@ -267,7 +280,8 @@ p {
 
 /* Booking Bar - Mobile First */
 .booking-bar {
-    background-color: white;
+    width: 100%;
+    padding: 0 1rem;
     margin: 3.5rem 0 1.5rem 0;
 }
 
@@ -279,6 +293,8 @@ p {
     padding: 1.5rem;
     border-radius: 0.75rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .booking-item {
@@ -324,7 +340,7 @@ p {
     opacity: 0;
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 43.5px;
     cursor: pointer;
 }
 
@@ -538,21 +554,14 @@ p {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
 .gallery-item {
-    border-radius: 0.5rem;
-    overflow: hidden;
+    width: 100%;
     height: 200px;
-    background-color: #f0f0f0;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item.large {
-    height: 400px;
-    grid-column: span 2;
+    overflow: hidden;
 }
 
 .gallery-item img {
@@ -988,7 +997,8 @@ p {
 /* Large Desktop Styles (min-width: 1024px) */
 @media (min-width: 1024px) {
     .container {
-        max-width: 1200px;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
     
     h1 {
