@@ -241,4 +241,47 @@ document.addEventListener('DOMContentLoaded', function() {
         const displayText = `${adultsCount} Adulto${adultsCount !== 1 ? 's' : ''}, ${childrenCount} Niño${childrenCount !== 1 ? 's' : ''}`;
         guestsDisplay.querySelector('span').textContent = displayText;
     }
+
+    // Función para manejar la animación de las cards
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Una vez que el elemento es visible, ya no necesitamos observarlo
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observar todas las cards y la imagen del about
+    const roomCards = document.querySelectorAll('.room-card');
+    const serviceCards = document.querySelectorAll('.service-card');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const aboutImage = document.querySelector('.about-image');
+    
+    // Observar cada card de habitaciones
+    roomCards.forEach(card => {
+        observer.observe(card);
+    });
+
+    // Observar cada card de servicios
+    serviceCards.forEach(card => {
+        observer.observe(card);
+    });
+
+    // Observar cada card de testimonios
+    testimonialCards.forEach(card => {
+        observer.observe(card);
+    });
+
+    // Observar la imagen del about
+    if (aboutImage) {
+        observer.observe(aboutImage);
+    }
 });
