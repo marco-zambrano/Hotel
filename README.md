@@ -9,7 +9,7 @@
 El sitio web incluye:
 - Información sobre habitaciones y suites.
 - Galería de imágenes del resort y sus alrededores.
-- Detalles sobre servicios adicionales (spa, restaurantes, actividades).
+- Detalles sobre servicios adicionales (jacuzzi, restaurantes, cuartos).
 - Reservas en línea.
 - Testimonios de clientes.
 - Información de contacto y ubicación.
