@@ -9,6 +9,7 @@ html, body {
     overflow-x: hidden;
     width: 100%;
     scroll-behavior: smooth;
+    scroll-padding-top: 40px;
 }
 
 body {
@@ -427,7 +428,8 @@ p {
 
 /* About Section */
 .about-section {
-    padding: 3rem 0;
+    padding: 5rem 0 3rem 0;
+    scroll-margin-top: 30px;
 }
 
 .about-grid {
@@ -487,8 +489,9 @@ p {
 
 /* Rooms Section */
 .rooms-section {
-    padding: 3rem 0;
+    padding: 5rem 0 3rem 0;
     background-color: #f9f9f9;
+    scroll-margin-top: 30px;
 }
 
 .section-header {
@@ -585,7 +588,7 @@ p {
 
 /* Gallery Section */
 .gallery-section {
-    padding: 3rem 0;
+    padding: 5rem 0 3rem 0;
 }
 
 .gallery-grid {
@@ -621,8 +624,9 @@ p {
 
 /* Services Section */
 .services-section {
-    padding: 3rem 0;
+    padding: 5rem 0 3rem 0;
     background-color: #f9f9f9;
+    scroll-margin-top: 30px;
 }
 
 .services-grid {
@@ -679,7 +683,8 @@ p {
 
 /* Testimonials Section */
 .testimonials-section {
-    padding: 3rem 0;
+    padding: 5rem 0 3rem 0;
+    scroll-margin-top: 30px;
 }
 
 .testimonials-grid {
@@ -762,9 +767,10 @@ p {
 
 /* Contact Section */
 .contact-section {
-    padding: 3rem 0;
+    padding: 5rem 0 3rem 0;
     background-color: #355F2E;
     color: white;
+    scroll-margin-top: 30px;
 }
 
 .contact-grid {
